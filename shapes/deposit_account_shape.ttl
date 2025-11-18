@@ -1,0 +1,76 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix schema: <http://schema.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# DepositAccount Shape (inherits from BankAccount)
+schema:DepositAccountShape
+    a sh:NodeShape ;
+    sh:targetClass schema:DepositAccount ;
+    
+    # Basic identity
+    sh:property [
+        sh:path schema:name ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:description "Account name" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:accountNumber ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:description "Account number" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:bankName ;
+        sh:datatype xsd:string ;
+        sh:description "Bank name" ;
+    ] ;
+    
+    # Financial
+    sh:property [
+        sh:path schema:currency ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "Currency" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:balance ;
+        sh:datatype xsd:decimal ;
+        sh:maxCount 1 ;
+        sh:description "Account balance" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:interestRate ;
+        sh:datatype xsd:decimal ;
+        sh:maxCount 1 ;
+        sh:description "Interest rate" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:minimumBalance ;
+        sh:datatype xsd:decimal ;
+        sh:maxCount 1 ;
+        sh:description "Minimum balance" ;
+    ] ;
+    
+    # Dates
+    sh:property [
+        sh:path schema:openingDate ;
+        sh:datatype xsd:date ;
+        sh:maxCount 1 ;
+        sh:description "Opening date" ;
+    ] ;
+    
+    # Account holder
+    sh:property [
+        sh:path schema:accountHolder ;
+        sh:datatype xsd:string ;
+        sh:description "Account holder" ;
+    ] .
+

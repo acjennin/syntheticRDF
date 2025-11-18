@@ -1,0 +1,111 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix schema: <http://schema.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# LocalBusiness Shape (inherits from Organization)
+schema:LocalBusinessShape
+    a sh:NodeShape ;
+    sh:targetClass schema:LocalBusiness ;
+    
+    # Basic identity (inherited from Organization)
+    sh:property [
+        sh:path schema:name ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:description "Business name" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:description ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "Business description" ;
+    ] ;
+    
+    # Contact (inherited)
+    sh:property [
+        sh:path schema:email ;
+        sh:datatype xsd:string ;
+        sh:description "Email address" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:telephone ;
+        sh:datatype xsd:string ;
+        sh:description "Telephone number" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:url ;
+        sh:datatype xsd:anyURI ;
+        sh:description "Website URL" ;
+    ] ;
+    
+    # Address
+    sh:property [
+        sh:path schema:address ;
+        sh:class schema:PostalAddress ;
+        sh:description "Business address" ;
+    ] ;
+    
+    # LocalBusiness-specific properties
+    sh:property [
+        sh:path schema:priceRange ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "Price range" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:paymentAccepted ;
+        sh:datatype xsd:string ;
+        sh:description "Payment methods accepted" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:currenciesAccepted ;
+        sh:datatype xsd:string ;
+        sh:description "Currencies accepted" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:openingHoursSpecification ;
+        sh:class schema:OpeningHoursSpecification ;
+        sh:description "Opening hours" ;
+    ] ;
+    
+    # Geographic
+    sh:property [
+        sh:path schema:geo ;
+        sh:class schema:GeoCoordinates ;
+        sh:description "Geographic coordinates" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:areaServed ;
+        sh:datatype xsd:string ;
+        sh:description "Area served" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:hasMap ;
+        sh:datatype xsd:anyURI ;
+        sh:maxCount 1 ;
+        sh:description "URL to map" ;
+    ] ;
+    
+    # Rating
+    sh:property [
+        sh:path schema:aggregateRating ;
+        sh:class schema:AggregateRating ;
+        sh:description "Aggregate rating" ;
+    ] ;
+    
+    # Industry
+    sh:property [
+        sh:path schema:industry ;
+        sh:datatype xsd:string ;
+        sh:description "Industry sector" ;
+    ] .
+

@@ -1,0 +1,100 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix schema: <http://schema.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# Review Shape
+schema:ReviewShape
+    a sh:NodeShape ;
+    sh:targetClass schema:Review ;
+    
+    # Author
+    sh:property [
+        sh:path schema:author ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:description "Review author" ;
+    ] ;
+    
+    # Date
+    sh:property [
+        sh:path schema:datePublished ;
+        sh:datatype xsd:date ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:description "Date review was published" ;
+    ] ;
+    
+    # Content
+    sh:property [
+        sh:path schema:reviewBody ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:description "Review text content" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:headline ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "Review headline" ;
+    ] ;
+    
+    # Rating
+    sh:property [
+        sh:path schema:reviewRating ;
+        sh:class schema:Rating ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:description "Review rating" ;
+    ] ;
+    
+    # Item reviewed
+    sh:property [
+        sh:path schema:itemReviewed ;
+        sh:datatype xsd:string ;
+        sh:description "Item being reviewed" ;
+    ] ;
+    
+    # Publisher
+    sh:property [
+        sh:path schema:publisher ;
+        sh:datatype xsd:string ;
+        sh:description "Review publisher" ;
+    ] .
+
+# AggregateRating Shape
+schema:AggregateRatingShape
+    a sh:NodeShape ;
+    sh:targetClass schema:AggregateRating ;
+    
+    sh:property [
+        sh:path schema:ratingValue ;
+        sh:datatype xsd:decimal ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:description "Average rating value" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:bestRating ;
+        sh:datatype xsd:decimal ;
+        sh:maxCount 1 ;
+        sh:description "Best possible rating" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:worstRating ;
+        sh:datatype xsd:decimal ;
+        sh:maxCount 1 ;
+        sh:description "Worst possible rating" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:reviewCount ;
+        sh:datatype xsd:integer ;
+        sh:maxCount 1 ;
+        sh:description "Number of reviews" ;
+    ] .
+

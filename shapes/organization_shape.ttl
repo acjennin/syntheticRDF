@@ -1,0 +1,112 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix schema: <http://schema.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# Organization Shape
+schema:OrganizationShape
+    a sh:NodeShape ;
+    sh:targetClass schema:Organization ;
+    
+    # Basic identity
+    sh:property [
+        sh:path schema:name ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:description "Organization name" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:legalName ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "Legal name" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:alternateName ;
+        sh:datatype xsd:string ;
+        sh:description "Alternate name or acronym" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:description ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "Organization description" ;
+    ] ;
+    
+    # Contact information
+    sh:property [
+        sh:path schema:email ;
+        sh:datatype xsd:string ;
+        sh:pattern "^[\\w\\.-]+@[\\w\\.-]+\\.\\w+$" ;
+        sh:description "Email address" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:telephone ;
+        sh:datatype xsd:string ;
+        sh:description "Telephone number" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:url ;
+        sh:datatype xsd:anyURI ;
+        sh:description "Website URL" ;
+    ] ;
+    
+    # Dates
+    sh:property [
+        sh:path schema:foundingDate ;
+        sh:datatype xsd:date ;
+        sh:maxCount 1 ;
+        sh:description "Founding date" ;
+    ] ;
+    
+    # Classification
+    sh:property [
+        sh:path schema:industry ;
+        sh:datatype xsd:string ;
+        sh:description "Industry sector" ;
+    ] ;
+    
+    # Size
+    sh:property [
+        sh:path schema:numberOfEmployees ;
+        sh:datatype xsd:integer ;
+        sh:maxCount 1 ;
+        sh:description "Number of employees" ;
+    ] ;
+    
+    # People
+    sh:property [
+        sh:path schema:founder ;
+        sh:datatype xsd:string ;
+        sh:description "Founder name" ;
+    ] ;
+    
+    # Location
+    sh:property [
+        sh:path schema:address ;
+        sh:class schema:PostalAddress ;
+        sh:description "Physical address" ;
+    ] ;
+    
+    # Identifiers
+    sh:property [
+        sh:path schema:taxID ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "Tax ID" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:vatID ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "VAT ID" ;
+    ] .
+
+
+

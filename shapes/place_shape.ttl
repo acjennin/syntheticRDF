@@ -1,0 +1,114 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix schema: <http://schema.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# Place Shape
+schema:PlaceShape
+    a sh:NodeShape ;
+    sh:targetClass schema:Place ;
+    
+    # Basic identity
+    sh:property [
+        sh:path schema:name ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:description "Place name" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:description ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "Place description" ;
+    ] ;
+    
+    # Address
+    sh:property [
+        sh:path schema:address ;
+        sh:class schema:PostalAddress ;
+        sh:description "Place address" ;
+    ] ;
+    
+    # Geographic coordinates
+    sh:property [
+        sh:path schema:geo ;
+        sh:class schema:GeoCoordinates ;
+        sh:description "Geographic coordinates" ;
+    ] ;
+    
+    # Contact information
+    sh:property [
+        sh:path schema:telephone ;
+        sh:datatype xsd:string ;
+        sh:description "Telephone number" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:url ;
+        sh:datatype xsd:anyURI ;
+        sh:description "Website URL" ;
+    ] ;
+    
+    # Images
+    sh:property [
+        sh:path schema:image ;
+        sh:datatype xsd:anyURI ;
+        sh:description "Place image URL" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:photo ;
+        sh:datatype xsd:anyURI ;
+        sh:description "Place photo URL" ;
+    ] ;
+    
+    # Opening hours
+    sh:property [
+        sh:path schema:openingHoursSpecification ;
+        sh:class schema:OpeningHoursSpecification ;
+        sh:description "Opening hours" ;
+    ] ;
+    
+    # Price range
+    sh:property [
+        sh:path schema:priceRange ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "Price range" ;
+    ] ;
+    
+    # Containment
+    sh:property [
+        sh:path schema:containedInPlace ;
+        sh:datatype xsd:string ;
+        sh:description "Larger place containing this place" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:containsPlace ;
+        sh:datatype xsd:string ;
+        sh:description "Smaller places contained in this place" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:hasMap ;
+        sh:datatype xsd:anyURI ;
+        sh:maxCount 1 ;
+        sh:description "URL to map" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:maximumAttendeeCapacity ;
+        sh:datatype xsd:integer ;
+        sh:maxCount 1 ;
+        sh:description "Maximum attendee capacity" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:publicAccess ;
+        sh:datatype xsd:boolean ;
+        sh:maxCount 1 ;
+        sh:description "Whether place is publicly accessible" ;
+    ] .
+

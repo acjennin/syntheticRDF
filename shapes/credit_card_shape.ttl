@@ -1,0 +1,104 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix schema: <http://schema.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# CreditCard Shape (inherits from PaymentCard/LoanOrCredit)
+schema:CreditCardShape
+    a sh:NodeShape ;
+    sh:targetClass schema:CreditCard ;
+    
+    # Basic identity
+    sh:property [
+        sh:path schema:name ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:description "Credit card name" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:description ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "Card description" ;
+    ] ;
+    
+    # Card details
+    sh:property [
+        sh:path schema:cardNumber ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "Card number" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:issuer ;
+        sh:datatype xsd:string ;
+        sh:description "Card issuer" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:cardholderName ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "Cardholder name" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:expires ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "Expiration date" ;
+    ] ;
+    
+    # Financial
+    sh:property [
+        sh:path schema:annualPercentageRate ;
+        sh:datatype xsd:decimal ;
+        sh:maxCount 1 ;
+        sh:description "Annual Percentage Rate" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:creditLimit ;
+        sh:datatype xsd:decimal ;
+        sh:maxCount 1 ;
+        sh:description "Credit limit" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:currency ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "Currency" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:interestRate ;
+        sh:datatype xsd:decimal ;
+        sh:maxCount 1 ;
+        sh:description "Interest rate" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:annualFee ;
+        sh:datatype xsd:decimal ;
+        sh:maxCount 1 ;
+        sh:description "Annual fee" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:cashbackRate ;
+        sh:datatype xsd:decimal ;
+        sh:maxCount 1 ;
+        sh:description "Cashback rate" ;
+    ] ;
+    
+    # Date
+    sh:property [
+        sh:path schema:dateIssued ;
+        sh:datatype xsd:date ;
+        sh:maxCount 1 ;
+        sh:description "Date issued" ;
+    ] .
+

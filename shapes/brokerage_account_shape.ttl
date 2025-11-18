@@ -1,0 +1,78 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix schema: <http://schema.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# BrokerageAccount Shape (inherits from FinancialProduct)
+schema:BrokerageAccountShape
+    a sh:NodeShape ;
+    sh:targetClass schema:BrokerageAccount ;
+    
+    # Basic identity
+    sh:property [
+        sh:path schema:name ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:description "Account name" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:accountNumber ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:description "Account number" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:broker ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:description "Brokerage firm" ;
+    ] ;
+    
+    # Financial
+    sh:property [
+        sh:path schema:currency ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "Currency" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:balance ;
+        sh:datatype xsd:decimal ;
+        sh:maxCount 1 ;
+        sh:description "Account balance" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:annualPercentageRate ;
+        sh:datatype xsd:decimal ;
+        sh:maxCount 1 ;
+        sh:description "Annual Percentage Rate" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:feesAndCommissionsSpecification ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "Fees and commissions" ;
+    ] ;
+    
+    # Dates
+    sh:property [
+        sh:path schema:openingDate ;
+        sh:datatype xsd:date ;
+        sh:maxCount 1 ;
+        sh:description "Opening date" ;
+    ] ;
+    
+    # Account holder
+    sh:property [
+        sh:path schema:accountHolder ;
+        sh:datatype xsd:string ;
+        sh:description "Account holder" ;
+    ] .
+

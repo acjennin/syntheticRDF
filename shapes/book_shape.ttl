@@ -1,0 +1,111 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix schema: <http://schema.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# Book Shape
+schema:BookShape
+    a sh:NodeShape ;
+    sh:targetClass schema:Book ;
+    
+    # Basic identity
+    sh:property [
+        sh:path schema:name ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:description "Book title" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:description ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "Book description" ;
+    ] ;
+    
+    # Identifiers
+    sh:property [
+        sh:path schema:isbn ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "ISBN" ;
+    ] ;
+    
+    # Format and details
+    sh:property [
+        sh:path schema:bookFormat ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "Book format" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:author ;
+        sh:datatype xsd:string ;
+        sh:description "Book author" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:publisher ;
+        sh:datatype xsd:string ;
+        sh:description "Publisher" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:numberOfPages ;
+        sh:datatype xsd:integer ;
+        sh:maxCount 1 ;
+        sh:description "Number of pages" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:datePublished ;
+        sh:datatype xsd:date ;
+        sh:description "Publication date" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:illustrator ;
+        sh:datatype xsd:string ;
+        sh:description "Illustrator" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:translator ;
+        sh:datatype xsd:string ;
+        sh:description "Translator" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:genre ;
+        sh:datatype xsd:string ;
+        sh:description "Book genre" ;
+    ] ;
+    
+    # Rating
+    sh:property [
+        sh:path schema:aggregateRating ;
+        sh:class schema:AggregateRating ;
+        sh:description "Book rating" ;
+    ] ;
+    
+    # Other
+    sh:property [
+        sh:path schema:image ;
+        sh:datatype xsd:anyURI ;
+        sh:description "Book cover image" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:inLanguage ;
+        sh:datatype xsd:string ;
+        sh:description "Language" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:bookEdition ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "Book edition" ;
+    ] .
+

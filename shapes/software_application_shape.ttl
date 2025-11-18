@@ -1,0 +1,116 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix schema: <http://schema.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# SoftwareApplication Shape
+schema:SoftwareApplicationShape
+    a sh:NodeShape ;
+    sh:targetClass schema:SoftwareApplication ;
+    
+    # Basic identity
+    sh:property [
+        sh:path schema:name ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:description "Application name" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:description ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "Application description" ;
+    ] ;
+    
+    # Category and system
+    sh:property [
+        sh:path schema:applicationCategory ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:description "Application category" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:operatingSystem ;
+        sh:datatype xsd:string ;
+        sh:description "Operating system" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:softwareVersion ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "Software version" ;
+    ] ;
+    
+    # Offers (price)
+    sh:property [
+        sh:path schema:offers ;
+        sh:class schema:Offer ;
+        sh:description "Application offers/price" ;
+    ] ;
+    
+    # Rating
+    sh:property [
+        sh:path schema:aggregateRating ;
+        sh:class schema:AggregateRating ;
+        sh:description "Application rating" ;
+    ] ;
+    
+    # Download and media
+    sh:property [
+        sh:path schema:downloadUrl ;
+        sh:datatype xsd:anyURI ;
+        sh:description "Download URL" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:screenshot ;
+        sh:datatype xsd:anyURI ;
+        sh:description "Screenshot URL" ;
+    ] ;
+    
+    # Author and publisher
+    sh:property [
+        sh:path schema:author ;
+        sh:datatype xsd:string ;
+        sh:description "Application author" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:publisher ;
+        sh:datatype xsd:string ;
+        sh:description "Application publisher" ;
+    ] ;
+    
+    # Other
+    sh:property [
+        sh:path schema:releaseNotes ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "Release notes" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:fileSize ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "File size" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:datePublished ;
+        sh:datatype xsd:date ;
+        sh:maxCount 1 ;
+        sh:description "Date published" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:dateModified ;
+        sh:datatype xsd:date ;
+        sh:maxCount 1 ;
+        sh:description "Date modified" ;
+    ] .
+

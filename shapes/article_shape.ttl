@@ -1,0 +1,107 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix schema: <http://schema.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# Article Shape
+schema:ArticleShape
+    a sh:NodeShape ;
+    sh:targetClass schema:Article ;
+    
+    # Basic identity
+    sh:property [
+        sh:path schema:headline ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:description "Article headline" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:description ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "Article description" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:articleBody ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:description "Article body text" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:articleSection ;
+        sh:datatype xsd:string ;
+        sh:description "Article section/category" ;
+    ] ;
+    
+    # Author and publisher
+    sh:property [
+        sh:path schema:author ;
+        sh:datatype xsd:string ;
+        sh:description "Article author" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:publisher ;
+        sh:datatype xsd:string ;
+        sh:description "Article publisher" ;
+    ] ;
+    
+    # Dates
+    sh:property [
+        sh:path schema:datePublished ;
+        sh:datatype xsd:date ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:description "Date published" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:dateModified ;
+        sh:datatype xsd:date ;
+        sh:maxCount 1 ;
+        sh:description "Date modified" ;
+    ] ;
+    
+    # Other
+    sh:property [
+        sh:path schema:wordCount ;
+        sh:datatype xsd:integer ;
+        sh:maxCount 1 ;
+        sh:description "Word count" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:keywords ;
+        sh:datatype xsd:string ;
+        sh:description "Article keywords" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:image ;
+        sh:datatype xsd:anyURI ;
+        sh:description "Article image URL" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:url ;
+        sh:datatype xsd:anyURI ;
+        sh:description "Article URL" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:about ;
+        sh:datatype xsd:string ;
+        sh:description "Subject matter" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:inLanguage ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "Language" ;
+    ] .
+

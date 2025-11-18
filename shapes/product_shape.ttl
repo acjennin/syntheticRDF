@@ -1,0 +1,145 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix schema: <http://schema.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# Product Shape
+schema:ProductShape
+    a sh:NodeShape ;
+    sh:targetClass schema:Product ;
+    
+    # Basic identity
+    sh:property [
+        sh:path schema:name ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:description "Product name" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:description ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "Product description" ;
+    ] ;
+    
+    # Identifiers
+    sh:property [
+        sh:path schema:sku ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "Stock Keeping Unit" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:gtin ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "Global Trade Item Number" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:mpn ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "Manufacturer Part Number" ;
+    ] ;
+    
+    # Brand and manufacturer
+    sh:property [
+        sh:path schema:brand ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "Brand name" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:manufacturer ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "Manufacturer name" ;
+    ] ;
+    
+    # Category
+    sh:property [
+        sh:path schema:category ;
+        sh:datatype xsd:string ;
+        sh:description "Product category" ;
+    ] ;
+    
+    # Physical properties
+    sh:property [
+        sh:path schema:weight ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "Product weight" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:height ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "Product height" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:width ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "Product width" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:depth ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "Product depth" ;
+    ] ;
+    
+    # Other properties
+    sh:property [
+        sh:path schema:color ;
+        sh:datatype xsd:string ;
+        sh:description "Product color" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:material ;
+        sh:datatype xsd:string ;
+        sh:description "Product material" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:itemCondition ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "Product condition" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:image ;
+        sh:datatype xsd:anyURI ;
+        sh:description "Product image URL" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:releaseDate ;
+        sh:datatype xsd:date ;
+        sh:maxCount 1 ;
+        sh:description "Product release date" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:model ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "Product model" ;
+    ] ;
+    
+    # Rating
+    sh:property [
+        sh:path schema:aggregateRating ;
+        sh:class schema:AggregateRating ;
+        sh:description "Aggregate rating" ;
+    ] .
+

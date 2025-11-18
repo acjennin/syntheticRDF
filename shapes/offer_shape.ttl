@@ -1,0 +1,106 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix schema: <http://schema.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# Offer Shape
+schema:OfferShape
+    a sh:NodeShape ;
+    sh:targetClass schema:Offer ;
+    
+    # Price
+    sh:property [
+        sh:path schema:price ;
+        sh:datatype xsd:decimal ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:description "Offer price" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:priceCurrency ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:description "Price currency" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:priceValidUntil ;
+        sh:datatype xsd:date ;
+        sh:maxCount 1 ;
+        sh:description "Date until which price is valid" ;
+    ] ;
+    
+    # Availability
+    sh:property [
+        sh:path schema:availability ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:description "Item availability" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:itemCondition ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "Item condition" ;
+    ] ;
+    
+    # Seller
+    sh:property [
+        sh:path schema:seller ;
+        sh:datatype xsd:string ;
+        sh:description "Seller name" ;
+    ] ;
+    
+    # URL
+    sh:property [
+        sh:path schema:url ;
+        sh:datatype xsd:anyURI ;
+        sh:description "Offer URL" ;
+    ] ;
+    
+    # Validity dates
+    sh:property [
+        sh:path schema:validFrom ;
+        sh:datatype xsd:dateTime ;
+        sh:maxCount 1 ;
+        sh:description "Date from which offer is valid" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:validThrough ;
+        sh:datatype xsd:dateTime ;
+        sh:maxCount 1 ;
+        sh:description "Date until which offer is valid" ;
+    ] ;
+    
+    # Region
+    sh:property [
+        sh:path schema:eligibleRegion ;
+        sh:datatype xsd:string ;
+        sh:description "Eligible region" ;
+    ] ;
+    
+    # Price specification
+    sh:property [
+        sh:path schema:priceSpecification ;
+        sh:class schema:PriceSpecification ;
+        sh:description "Price specification" ;
+    ] ;
+    
+    # Shipping
+    sh:property [
+        sh:path schema:shippingDetails ;
+        sh:class schema:OfferShippingDetails ;
+        sh:description "Shipping details" ;
+    ] ;
+    
+    # Warranty
+    sh:property [
+        sh:path schema:warranty ;
+        sh:class schema:WarrantyPromise ;
+        sh:description "Warranty information" ;
+    ] .
+

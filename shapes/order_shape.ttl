@@ -1,0 +1,111 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix schema: <http://schema.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# Order Shape
+schema:OrderShape
+    a sh:NodeShape ;
+    sh:targetClass schema:Order ;
+    
+    # Identity
+    sh:property [
+        sh:path schema:orderNumber ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:description "Order number" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:confirmationNumber ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "Confirmation number" ;
+    ] ;
+    
+    # Status
+    sh:property [
+        sh:path schema:orderStatus ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:description "Order status" ;
+    ] ;
+    
+    # Dates
+    sh:property [
+        sh:path schema:orderDate ;
+        sh:datatype xsd:date ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:description "Date order was placed" ;
+    ] ;
+    
+    # Customer (relationship to Person)
+    sh:property [
+        sh:path schema:customer ;
+        sh:or (
+            [ sh:class schema:Person ]
+            [ sh:datatype xsd:string ]
+        ) ;
+        sh:description "Customer who placed the order" ;
+    ] ;
+    
+    # Payment method (relationship to BankAccount)
+    sh:property [
+        sh:path schema:paymentMethod ;
+        sh:or (
+            [ sh:class schema:BankAccount ]
+            [ sh:datatype xsd:string ]
+        ) ;
+        sh:description "Payment method (BankAccount)" ;
+    ] ;
+    
+    # Seller (relationship to Organization)
+    sh:property [
+        sh:path schema:seller ;
+        sh:or (
+            [ sh:class schema:Organization ]
+            [ sh:datatype xsd:string ]
+        ) ;
+        sh:description "Seller organization" ;
+    ] ;
+    
+    # Merchant (alternative to seller)
+    sh:property [
+        sh:path schema:merchant ;
+        sh:or (
+            [ sh:class schema:Organization ]
+            [ sh:datatype xsd:string ]
+        ) ;
+        sh:description "Merchant organization" ;
+    ] ;
+    
+    # Ordered items
+    sh:property [
+        sh:path schema:orderedItem ;
+        sh:description "Items in the order" ;
+    ] ;
+    
+    # Financial details
+    sh:property [
+        sh:path schema:totalPaymentDue ;
+        sh:datatype xsd:decimal ;
+        sh:description "Total amount" ;
+    ] ;
+    
+    # Addresses
+    sh:property [
+        sh:path schema:billingAddress ;
+        sh:class schema:PostalAddress ;
+        sh:description "Billing address" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:shippingAddress ;
+        sh:class schema:PostalAddress ;
+        sh:description "Shipping address" ;
+    ] .
+
+
+

@@ -1,0 +1,84 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix schema: <http://schema.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# InvestmentOrDeposit Shape
+schema:InvestmentOrDepositShape
+    a sh:NodeShape ;
+    sh:targetClass schema:InvestmentOrDeposit ;
+    
+    # Basic identity
+    sh:property [
+        sh:path schema:name ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:description "Investment name" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:description ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "Investment description" ;
+    ] ;
+    
+    # Financial
+    sh:property [
+        sh:path schema:amount ;
+        sh:datatype xsd:decimal ;
+        sh:maxCount 1 ;
+        sh:description "Investment amount" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:interestRate ;
+        sh:datatype xsd:decimal ;
+        sh:maxCount 1 ;
+        sh:description "Interest rate" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:annualPercentageRate ;
+        sh:datatype xsd:decimal ;
+        sh:maxCount 1 ;
+        sh:description "Annual Percentage Rate" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:riskLevel ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "Risk level" ;
+    ] ;
+    
+    # Provider
+    sh:property [
+        sh:path schema:provider ;
+        sh:datatype xsd:string ;
+        sh:description "Investment provider" ;
+    ] ;
+    
+    # Currency
+    sh:property [
+        sh:path schema:currency ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "Currency" ;
+    ] ;
+    
+    # Terms
+    sh:property [
+        sh:path schema:term ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "Investment term" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:minimumInvestment ;
+        sh:datatype xsd:decimal ;
+        sh:maxCount 1 ;
+        sh:description "Minimum investment" ;
+    ] .
+

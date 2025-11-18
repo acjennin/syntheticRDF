@@ -1,0 +1,105 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix schema: <http://schema.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# LoanOrCredit Shape
+schema:LoanOrCreditShape
+    a sh:NodeShape ;
+    sh:targetClass schema:LoanOrCredit ;
+    
+    # Basic identity
+    sh:property [
+        sh:path schema:name ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:description "Loan name" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:description ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "Loan description" ;
+    ] ;
+    
+    # Financial
+    sh:property [
+        sh:path schema:amount ;
+        sh:datatype xsd:decimal ;
+        sh:maxCount 1 ;
+        sh:description "Loan amount" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:annualPercentageRate ;
+        sh:datatype xsd:decimal ;
+        sh:maxCount 1 ;
+        sh:description "Annual Percentage Rate" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:interestRate ;
+        sh:datatype xsd:decimal ;
+        sh:maxCount 1 ;
+        sh:description "Interest rate" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:currency ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "Currency" ;
+    ] ;
+    
+    # Terms
+    sh:property [
+        sh:path schema:loanTerm ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "Loan term" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:loanType ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "Loan type" ;
+    ] ;
+    
+    # Parties
+    sh:property [
+        sh:path schema:lender ;
+        sh:datatype xsd:string ;
+        sh:description "Lender" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:borrower ;
+        sh:datatype xsd:string ;
+        sh:description "Borrower" ;
+    ] ;
+    
+    # Dates
+    sh:property [
+        sh:path schema:dateIssued ;
+        sh:datatype xsd:date ;
+        sh:maxCount 1 ;
+        sh:description "Date issued" ;
+    ] ;
+    
+    # Other
+    sh:property [
+        sh:path schema:gracePeriod ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "Grace period" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:requiredCollateral ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "Required collateral" ;
+    ] .
+

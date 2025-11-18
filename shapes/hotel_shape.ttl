@@ -1,0 +1,80 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix schema: <http://schema.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# Hotel Shape (inherits from LocalBusiness)
+schema:HotelShape
+    a sh:NodeShape ;
+    sh:targetClass schema:Hotel ;
+    
+    # Basic identity (inherited)
+    sh:property [
+        sh:path schema:name ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:description "Hotel name" ;
+    ] ;
+    
+    # Hotel-specific
+    sh:property [
+        sh:path schema:checkinTime ;
+        sh:datatype xsd:time ;
+        sh:maxCount 1 ;
+        sh:description "Check-in time" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:checkoutTime ;
+        sh:datatype xsd:time ;
+        sh:maxCount 1 ;
+        sh:description "Check-out time" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:numberOfRooms ;
+        sh:datatype xsd:integer ;
+        sh:maxCount 1 ;
+        sh:description "Number of rooms" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:petsAllowed ;
+        sh:datatype xsd:boolean ;
+        sh:maxCount 1 ;
+        sh:description "Pets allowed" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:starRating ;
+        sh:class schema:Rating ;
+        sh:description "Star rating" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:amenityFeature ;
+        sh:class schema:LocationFeatureSpecification ;
+        sh:description "Hotel amenities" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:priceRange ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "Price range" ;
+    ] ;
+    
+    # Geographic
+    sh:property [
+        sh:path schema:geo ;
+        sh:class schema:GeoCoordinates ;
+        sh:description "Geographic coordinates" ;
+    ] ;
+    
+    # Rating
+    sh:property [
+        sh:path schema:aggregateRating ;
+        sh:class schema:AggregateRating ;
+        sh:description "Hotel rating" ;
+    ] .
+

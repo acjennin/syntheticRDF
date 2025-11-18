@@ -1,0 +1,80 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix schema: <http://schema.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# Restaurant Shape (inherits from LocalBusiness)
+schema:RestaurantShape
+    a sh:NodeShape ;
+    sh:targetClass schema:Restaurant ;
+    
+    # Basic identity (inherited)
+    sh:property [
+        sh:path schema:name ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:description "Restaurant name" ;
+    ] ;
+    
+    # Restaurant-specific
+    sh:property [
+        sh:path schema:servesCuisine ;
+        sh:datatype xsd:string ;
+        sh:description "Type of cuisine" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:menu ;
+        sh:datatype xsd:anyURI ;
+        sh:description "Menu URL" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:acceptsReservations ;
+        sh:datatype xsd:boolean ;
+        sh:maxCount 1 ;
+        sh:description "Accepts reservations" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:hasMenu ;
+        sh:datatype xsd:boolean ;
+        sh:maxCount 1 ;
+        sh:description "Has menu" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:priceRange ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "Price range" ;
+    ] ;
+    
+    # Opening hours
+    sh:property [
+        sh:path schema:openingHoursSpecification ;
+        sh:class schema:OpeningHoursSpecification ;
+        sh:description "Opening hours" ;
+    ] ;
+    
+    # Geographic
+    sh:property [
+        sh:path schema:geo ;
+        sh:class schema:GeoCoordinates ;
+        sh:description "Geographic coordinates" ;
+    ] ;
+    
+    # Payment
+    sh:property [
+        sh:path schema:paymentAccepted ;
+        sh:datatype xsd:string ;
+        sh:description "Payment methods accepted" ;
+    ] ;
+    
+    # Rating
+    sh:property [
+        sh:path schema:aggregateRating ;
+        sh:class schema:AggregateRating ;
+        sh:description "Restaurant rating" ;
+    ] .
+

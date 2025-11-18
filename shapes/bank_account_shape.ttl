@@ -1,0 +1,80 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix schema: <http://schema.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# BankAccount Shape
+schema:BankAccountShape
+    a sh:NodeShape ;
+    sh:targetClass schema:BankAccount ;
+    
+    # Identity
+    sh:property [
+        sh:path schema:name ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "Account name" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:identifier ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:description "Account identifier" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:accountId ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:description "Account number" ;
+    ] ;
+    
+    # Bank information
+    sh:property [
+        sh:path schema:bankAccountType ;
+        sh:datatype xsd:string ;
+        sh:description "Type of bank account" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:servicer ;
+        sh:datatype xsd:string ;
+        sh:description "Bank name" ;
+    ] ;
+    
+    # Financial details
+    sh:property [
+        sh:path schema:currency ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "Currency code" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:accountMinimumInflow ;
+        sh:datatype xsd:decimal ;
+        sh:description "Account balance" ;
+    ] ;
+    
+    # Dates
+    sh:property [
+        sh:path schema:openingHours ;
+        sh:datatype xsd:date ;
+        sh:maxCount 1 ;
+        sh:description "Opening date" ;
+    ] ;
+    
+    # Ownership (relationship to Person)
+    sh:property [
+        sh:path schema:accountHolder ;
+        sh:or (
+            [ sh:class schema:Person ]
+            [ sh:datatype xsd:string ]
+        ) ;
+        sh:description "Account holder (Person)" ;
+    ] .
+
+
+

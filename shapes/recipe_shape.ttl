@@ -1,0 +1,120 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix schema: <http://schema.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# Recipe Shape
+schema:RecipeShape
+    a sh:NodeShape ;
+    sh:targetClass schema:Recipe ;
+    
+    # Basic identity
+    sh:property [
+        sh:path schema:name ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:description "Recipe name" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:description ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "Recipe description" ;
+    ] ;
+    
+    # Category and cuisine
+    sh:property [
+        sh:path schema:recipeCategory ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:description "Recipe category" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:recipeCuisine ;
+        sh:datatype xsd:string ;
+        sh:description "Cuisine type" ;
+    ] ;
+    
+    # Ingredients and instructions
+    sh:property [
+        sh:path schema:recipeIngredient ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:description "Recipe ingredients" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:recipeInstructions ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:description "Recipe instructions" ;
+    ] ;
+    
+    # Time
+    sh:property [
+        sh:path schema:prepTime ;
+        sh:datatype xsd:duration ;
+        sh:maxCount 1 ;
+        sh:description "Preparation time" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:cookTime ;
+        sh:datatype xsd:duration ;
+        sh:maxCount 1 ;
+        sh:description "Cooking time" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:totalTime ;
+        sh:datatype xsd:duration ;
+        sh:maxCount 1 ;
+        sh:description "Total time" ;
+    ] ;
+    
+    # Yield
+    sh:property [
+        sh:path schema:recipeYield ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "Number of servings" ;
+    ] ;
+    
+    # Nutrition
+    sh:property [
+        sh:path schema:nutrition ;
+        sh:class schema:NutritionInformation ;
+        sh:description "Nutrition information" ;
+    ] ;
+    
+    # Author
+    sh:property [
+        sh:path schema:author ;
+        sh:datatype xsd:string ;
+        sh:description "Recipe author" ;
+    ] ;
+    
+    # Image
+    sh:property [
+        sh:path schema:image ;
+        sh:datatype xsd:anyURI ;
+        sh:description "Recipe image" ;
+    ] ;
+    
+    # Rating
+    sh:property [
+        sh:path schema:aggregateRating ;
+        sh:class schema:AggregateRating ;
+        sh:description "Recipe rating" ;
+    ] ;
+    
+    # Keywords
+    sh:property [
+        sh:path schema:keywords ;
+        sh:datatype xsd:string ;
+        sh:description "Recipe keywords" ;
+    ] .
+

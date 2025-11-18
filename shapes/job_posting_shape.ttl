@@ -1,0 +1,115 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix schema: <http://schema.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# JobPosting Shape
+schema:JobPostingShape
+    a sh:NodeShape ;
+    sh:targetClass schema:JobPosting ;
+    
+    # Basic identity
+    sh:property [
+        sh:path schema:title ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:description "Job title" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:description ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:description "Job description" ;
+    ] ;
+    
+    # Dates
+    sh:property [
+        sh:path schema:datePosted ;
+        sh:datatype xsd:date ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:description "Date job was posted" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:validThrough ;
+        sh:datatype xsd:date ;
+        sh:maxCount 1 ;
+        sh:description "Date until which posting is valid" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:applicationDeadline ;
+        sh:datatype xsd:date ;
+        sh:maxCount 1 ;
+        sh:description "Application deadline" ;
+    ] ;
+    
+    # Employment type
+    sh:property [
+        sh:path schema:employmentType ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:description "Type of employment" ;
+    ] ;
+    
+    # Organization
+    sh:property [
+        sh:path schema:hiringOrganization ;
+        sh:datatype xsd:string ;
+        sh:description "Hiring organization" ;
+    ] ;
+    
+    # Location
+    sh:property [
+        sh:path schema:jobLocation ;
+        sh:class schema:Place ;
+        sh:description "Job location" ;
+    ] ;
+    
+    # Salary
+    sh:property [
+        sh:path schema:baseSalary ;
+        sh:class schema:MonetaryAmount ;
+        sh:description "Base salary" ;
+    ] ;
+    
+    # Work details
+    sh:property [
+        sh:path schema:workHours ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "Work hours" ;
+    ] ;
+    
+    # Requirements
+    sh:property [
+        sh:path schema:qualifications ;
+        sh:datatype xsd:string ;
+        sh:description "Required qualifications" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:skills ;
+        sh:datatype xsd:string ;
+        sh:description "Required skills" ;
+    ] ;
+    
+    # Benefits
+    sh:property [
+        sh:path schema:jobBenefits ;
+        sh:datatype xsd:string ;
+        sh:description "Job benefits" ;
+    ] ;
+    
+    # Application
+    sh:property [
+        sh:path schema:applicationUrl ;
+        sh:datatype xsd:anyURI ;
+        sh:maxCount 1 ;
+        sh:description "URL to apply" ;
+    ] .
+

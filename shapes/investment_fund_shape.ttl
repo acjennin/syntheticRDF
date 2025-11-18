@@ -1,0 +1,99 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix schema: <http://schema.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# InvestmentFund Shape
+schema:InvestmentFundShape
+    a sh:NodeShape ;
+    sh:targetClass schema:InvestmentFund ;
+    
+    # Basic identity
+    sh:property [
+        sh:path schema:name ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:description "Fund name" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:description ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "Fund description" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:fundType ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:description "Fund type" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:category ;
+        sh:datatype xsd:string ;
+        sh:description "Fund category" ;
+    ] ;
+    
+    # Provider
+    sh:property [
+        sh:path schema:provider ;
+        sh:datatype xsd:string ;
+        sh:description "Fund provider" ;
+    ] ;
+    
+    # Financial
+    sh:property [
+        sh:path schema:netAssetValue ;
+        sh:datatype xsd:decimal ;
+        sh:maxCount 1 ;
+        sh:description "Net Asset Value" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:expenseRatio ;
+        sh:datatype xsd:decimal ;
+        sh:maxCount 1 ;
+        sh:description "Expense ratio" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:annualPercentageRate ;
+        sh:datatype xsd:decimal ;
+        sh:maxCount 1 ;
+        sh:description "Annual Percentage Rate" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:minimumInvestment ;
+        sh:datatype xsd:decimal ;
+        sh:maxCount 1 ;
+        sh:description "Minimum investment" ;
+    ] ;
+    
+    # Currency
+    sh:property [
+        sh:path schema:currency ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "Currency" ;
+    ] ;
+    
+    # Risk
+    sh:property [
+        sh:path schema:riskLevel ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "Risk level" ;
+    ] ;
+    
+    # Date
+    sh:property [
+        sh:path schema:dateEstablished ;
+        sh:datatype xsd:date ;
+        sh:maxCount 1 ;
+        sh:description "Date established" ;
+    ] .
+

@@ -1,0 +1,114 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix schema: <http://schema.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# Invoice Shape
+schema:InvoiceShape
+    a sh:NodeShape ;
+    sh:targetClass schema:Invoice ;
+    
+    # Basic identity
+    sh:property [
+        sh:path schema:invoiceNumber ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:description "Invoice number" ;
+    ] ;
+    
+    # Financial
+    sh:property [
+        sh:path schema:totalPaymentDue ;
+        sh:datatype xsd:decimal ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:description "Total payment due" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:paymentDueDate ;
+        sh:datatype xsd:date ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:description "Payment due date" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:minimumPaymentDue ;
+        sh:datatype xsd:decimal ;
+        sh:maxCount 1 ;
+        sh:description "Minimum payment due" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:priceCurrency ;
+        sh:datatype xsd:string ;
+        sh:description "Currency" ;
+    ] ;
+    
+    # Billing period
+    sh:property [
+        sh:path schema:billingPeriod ;
+        sh:class schema:Duration ;
+        sh:description "Billing period" ;
+    ] ;
+    
+    # Account
+    sh:property [
+        sh:path schema:accountId ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "Account ID" ;
+    ] ;
+    
+    # Status
+    sh:property [
+        sh:path schema:paymentStatus ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:description "Payment status" ;
+    ] ;
+    
+    # Provider and customer
+    sh:property [
+        sh:path schema:provider ;
+        sh:datatype xsd:string ;
+        sh:description "Invoice provider" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:customer ;
+        sh:datatype xsd:string ;
+        sh:description "Customer" ;
+    ] ;
+    
+    # References
+    sh:property [
+        sh:path schema:referencesOrder ;
+        sh:datatype xsd:string ;
+        sh:description "Referenced order" ;
+    ] ;
+    
+    # Payment
+    sh:property [
+        sh:path schema:paymentMethod ;
+        sh:datatype xsd:string ;
+        sh:description "Payment method" ;
+    ] ;
+    
+    # Dates
+    sh:property [
+        sh:path schema:dateIssued ;
+        sh:datatype xsd:date ;
+        sh:maxCount 1 ;
+        sh:description "Date issued" ;
+    ] ;
+    
+    # Category
+    sh:property [
+        sh:path schema:category ;
+        sh:datatype xsd:string ;
+        sh:description "Invoice category" ;
+    ] .
+

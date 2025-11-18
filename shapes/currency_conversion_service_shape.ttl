@@ -1,0 +1,84 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix schema: <http://schema.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# CurrencyConversionService Shape
+schema:CurrencyConversionServiceShape
+    a sh:NodeShape ;
+    sh:targetClass schema:CurrencyConversionService ;
+    
+    # Basic identity
+    sh:property [
+        sh:path schema:name ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:description "Service name" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:description ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "Service description" ;
+    ] ;
+    
+    # Currency conversion
+    sh:property [
+        sh:path schema:fromCurrency ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:description "Source currency" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:toCurrency ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:description "Target currency" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:exchangeRate ;
+        sh:datatype xsd:decimal ;
+        sh:maxCount 1 ;
+        sh:description "Exchange rate" ;
+    ] ;
+    
+    # Provider
+    sh:property [
+        sh:path schema:provider ;
+        sh:datatype xsd:string ;
+        sh:description "Service provider" ;
+    ] ;
+    
+    # Area served
+    sh:property [
+        sh:path schema:areaServed ;
+        sh:datatype xsd:string ;
+        sh:description "Area served" ;
+    ] ;
+    
+    # Fee
+    sh:property [
+        sh:path schema:fee ;
+        sh:datatype xsd:decimal ;
+        sh:maxCount 1 ;
+        sh:description "Service fee" ;
+    ] ;
+    
+    # Contact
+    sh:property [
+        sh:path schema:url ;
+        sh:datatype xsd:anyURI ;
+        sh:description "Service URL" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:telephone ;
+        sh:datatype xsd:string ;
+        sh:description "Telephone" ;
+    ] .
+

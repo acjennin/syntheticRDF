@@ -1,0 +1,244 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix schema: <http://schema.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+# Main Person Shape
+schema:PersonShape
+    a sh:NodeShape ;
+    sh:targetClass schema:Person ;
+    
+    # Basic identity properties
+    sh:property [
+        sh:path schema:name ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:description "Full name of the person" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:givenName ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "Given name (first name)" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:familyName ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "Family name (last name)" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:additionalName ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "Middle name or initial" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:alternateName ;
+        sh:datatype xsd:string ;
+        sh:description "Alternate name or nickname" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:honorificPrefix ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "Honorific prefix (Mr., Mrs., Dr., etc.)" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:honorificSuffix ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "Honorific suffix (Jr., Sr., PhD, etc.)" ;
+    ] ;
+    
+    # Contact information
+    sh:property [
+        sh:path schema:email ;
+        sh:datatype xsd:string ;
+        sh:pattern "^[\\w\\.-]+@[\\w\\.-]+\\.\\w+$" ;
+        sh:description "Email address" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:telephone ;
+        sh:datatype xsd:string ;
+        sh:description "Telephone number" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:faxNumber ;
+        sh:datatype xsd:string ;
+        sh:description "Fax number" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:url ;
+        sh:datatype xsd:anyURI ;
+        sh:description "Personal website URL" ;
+    ] ;
+    
+    # Biographical information
+    sh:property [
+        sh:path schema:birthDate ;
+        sh:datatype xsd:date ;
+        sh:maxCount 1 ;
+        sh:description "Date of birth" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:birthPlace ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "Place of birth" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:deathDate ;
+        sh:datatype xsd:date ;
+        sh:maxCount 1 ;
+        sh:description "Date of death (if applicable)" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:deathPlace ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "Place of death (if applicable)" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:gender ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:in ("Male" "Female" "Non-binary" "Prefer not to say") ;
+        sh:description "Gender" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:nationality ;
+        sh:datatype xsd:string ;
+        sh:description "Nationality" ;
+    ] ;
+    
+    # Professional information
+    sh:property [
+        sh:path schema:jobTitle ;
+        sh:datatype xsd:string ;
+        sh:description "Job title or profession" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:worksFor ;
+        sh:datatype xsd:string ;
+        sh:description "Organization the person works for" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:affiliation ;
+        sh:datatype xsd:string ;
+        sh:description "Organization affiliations" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:alumniOf ;
+        sh:datatype xsd:string ;
+        sh:description "Educational institutions attended" ;
+    ] ;
+    
+    # Physical characteristics
+    sh:property [
+        sh:path schema:height ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "Height" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:weight ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "Weight" ;
+    ] ;
+    
+    # Address (reference to PostalAddress)
+    sh:property [
+        sh:path schema:address ;
+        sh:class schema:PostalAddress ;
+        sh:description "Physical address" ;
+    ] ;
+    
+    # Social and recognition
+    sh:property [
+        sh:path schema:award ;
+        sh:datatype xsd:string ;
+        sh:description "Awards received" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:knowsLanguage ;
+        sh:datatype xsd:string ;
+        sh:description "Languages known" ;
+    ] ;
+    
+    # Identifiers
+    sh:property [
+        sh:path schema:taxID ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "Tax ID (SSN, etc.)" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:vatID ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "VAT ID" ;
+    ] .
+
+# PostalAddress Shape
+schema:PostalAddressShape
+    a sh:NodeShape ;
+    sh:targetClass schema:PostalAddress ;
+    
+    sh:property [
+        sh:path schema:streetAddress ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:addressLocality ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "City" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:addressRegion ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "State or province" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:postalCode ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:addressCountry ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "Country code" ;
+    ] .
+
+
+

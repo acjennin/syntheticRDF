@@ -1,0 +1,77 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix schema: <http://schema.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# FinancialProduct Shape
+schema:FinancialProductShape
+    a sh:NodeShape ;
+    sh:targetClass schema:FinancialProduct ;
+    
+    # Basic identity
+    sh:property [
+        sh:path schema:name ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:description "Financial product name" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:description ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "Product description" ;
+    ] ;
+    
+    # Financial properties
+    sh:property [
+        sh:path schema:annualPercentageRate ;
+        sh:datatype xsd:decimal ;
+        sh:maxCount 1 ;
+        sh:description "Annual Percentage Rate" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:feesAndCommissionsSpecification ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "Fees and commissions" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:interestRate ;
+        sh:datatype xsd:decimal ;
+        sh:maxCount 1 ;
+        sh:description "Interest rate" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:interestRateType ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "Interest rate type" ;
+    ] ;
+    
+    # Provider
+    sh:property [
+        sh:path schema:provider ;
+        sh:datatype xsd:string ;
+        sh:description "Product provider" ;
+    ] ;
+    
+    # Currency
+    sh:property [
+        sh:path schema:currency ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "Currency" ;
+    ] ;
+    
+    # Terms
+    sh:property [
+        sh:path schema:termsOfService ;
+        sh:datatype xsd:anyURI ;
+        sh:maxCount 1 ;
+        sh:description "Terms of service URL" ;
+    ] .
+

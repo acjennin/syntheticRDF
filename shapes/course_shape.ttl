@@ -1,0 +1,113 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix schema: <http://schema.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# Course Shape
+schema:CourseShape
+    a sh:NodeShape ;
+    sh:targetClass schema:Course ;
+    
+    # Basic identity
+    sh:property [
+        sh:path schema:name ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:description "Course name" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:description ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "Course description" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:courseCode ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "Course code" ;
+    ] ;
+    
+    # Provider
+    sh:property [
+        sh:path schema:provider ;
+        sh:datatype xsd:string ;
+        sh:description "Course provider" ;
+    ] ;
+    
+    # Instructor
+    sh:property [
+        sh:path schema:instructor ;
+        sh:datatype xsd:string ;
+        sh:description "Course instructor" ;
+    ] ;
+    
+    # Prerequisites
+    sh:property [
+        sh:path schema:coursePrerequisites ;
+        sh:datatype xsd:string ;
+        sh:description "Course prerequisites" ;
+    ] ;
+    
+    # Educational level
+    sh:property [
+        sh:path schema:educationalLevel ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "Educational level" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:educationalCredentialAwarded ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "Credential awarded" ;
+    ] ;
+    
+    # Time
+    sh:property [
+        sh:path schema:timeRequired ;
+        sh:datatype xsd:duration ;
+        sh:maxCount 1 ;
+        sh:description "Time required to complete" ;
+    ] ;
+    
+    # Content
+    sh:property [
+        sh:path schema:teaches ;
+        sh:datatype xsd:string ;
+        sh:description "What the course teaches" ;
+    ] ;
+    
+    # Dates
+    sh:property [
+        sh:path schema:startDate ;
+        sh:datatype xsd:date ;
+        sh:maxCount 1 ;
+        sh:description "Course start date" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:endDate ;
+        sh:datatype xsd:date ;
+        sh:maxCount 1 ;
+        sh:description "Course end date" ;
+    ] ;
+    
+    # Rating
+    sh:property [
+        sh:path schema:aggregateRating ;
+        sh:class schema:AggregateRating ;
+        sh:description "Course rating" ;
+    ] ;
+    
+    # Credits
+    sh:property [
+        sh:path schema:numberOfCredits ;
+        sh:datatype xsd:integer ;
+        sh:maxCount 1 ;
+        sh:description "Number of credits" ;
+    ] .
+

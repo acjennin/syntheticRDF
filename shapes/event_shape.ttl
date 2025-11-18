@@ -1,0 +1,117 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix schema: <http://schema.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# Event Shape
+schema:EventShape
+    a sh:NodeShape ;
+    sh:targetClass schema:Event ;
+    
+    # Basic identity
+    sh:property [
+        sh:path schema:name ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:description "Event name" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:description ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "Event description" ;
+    ] ;
+    
+    # Dates
+    sh:property [
+        sh:path schema:startDate ;
+        sh:datatype xsd:dateTime ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:description "Event start date" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:endDate ;
+        sh:datatype xsd:dateTime ;
+        sh:maxCount 1 ;
+        sh:description "Event end date" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:duration ;
+        sh:datatype xsd:duration ;
+        sh:maxCount 1 ;
+        sh:description "Event duration" ;
+    ] ;
+    
+    # Status
+    sh:property [
+        sh:path schema:eventStatus ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "Event status" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:eventAttendanceMode ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "Event attendance mode" ;
+    ] ;
+    
+    # Location
+    sh:property [
+        sh:path schema:location ;
+        sh:class schema:Place ;
+        sh:description "Event location" ;
+    ] ;
+    
+    # Organizer and participants
+    sh:property [
+        sh:path schema:organizer ;
+        sh:datatype xsd:string ;
+        sh:description "Event organizer" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:performer ;
+        sh:datatype xsd:string ;
+        sh:description "Event performer" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:sponsor ;
+        sh:datatype xsd:string ;
+        sh:description "Event sponsor" ;
+    ] ;
+    
+    # Capacity
+    sh:property [
+        sh:path schema:maximumAttendeeCapacity ;
+        sh:datatype xsd:integer ;
+        sh:maxCount 1 ;
+        sh:description "Maximum attendee capacity" ;
+    ] ;
+    
+    # Offers (tickets)
+    sh:property [
+        sh:path schema:offers ;
+        sh:class schema:Offer ;
+        sh:description "Event offers/tickets" ;
+    ] ;
+    
+    # Other
+    sh:property [
+        sh:path schema:image ;
+        sh:datatype xsd:anyURI ;
+        sh:description "Event image URL" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:keywords ;
+        sh:datatype xsd:string ;
+        sh:description "Event keywords" ;
+    ] .
+

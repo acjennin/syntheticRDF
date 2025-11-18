@@ -1,0 +1,85 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix schema: <http://schema.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# PaymentCard Shape
+schema:PaymentCardShape
+    a sh:NodeShape ;
+    sh:targetClass schema:PaymentCard ;
+    
+    # Basic identity
+    sh:property [
+        sh:path schema:name ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:description "Card name" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:description ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "Card description" ;
+    ] ;
+    
+    # Card details
+    sh:property [
+        sh:path schema:cardNumber ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "Card number" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:cardHolderName ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "Cardholder name" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:expires ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "Expiration date" ;
+    ] ;
+    
+    # Financial
+    sh:property [
+        sh:path schema:currency ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "Currency" ;
+    ] ;
+    
+    # Issuer and network
+    sh:property [
+        sh:path schema:issuer ;
+        sh:datatype xsd:string ;
+        sh:description "Card issuer" ;
+    ] ;
+    
+    sh:property [
+        sh:path schema:network ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:description "Card network" ;
+    ] ;
+    
+    # Date
+    sh:property [
+        sh:path schema:dateIssued ;
+        sh:datatype xsd:date ;
+        sh:maxCount 1 ;
+        sh:description "Date issued" ;
+    ] ;
+    
+    # Features
+    sh:property [
+        sh:path schema:contactlessPayment ;
+        sh:datatype xsd:boolean ;
+        sh:maxCount 1 ;
+        sh:description "Contactless payment support" ;
+    ] .
+
